@@ -2,8 +2,8 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s) != len(t):
             return False
-        countS = {} 
-        countT = {} 
+        countS = {0} 
+        countT = {0} 
 
         for i in range(len(s)):
             countS[s[i]] = 1 + countS.get(s[i],0)
