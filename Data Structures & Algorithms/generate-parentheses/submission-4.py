@@ -1,0 +1,25 @@
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        res,sol = [],[]
+
+        def backtrack(open,close):
+            if open == close == n:
+                res.append("".join(sol))
+                return
+            
+            if open < n:
+                sol.append("(")
+                backtrack(open+1,close)
+                sol.pop()
+
+            if close < open:
+                sol.append(")")
+                backtrack(open,close+1)
+                sol.pop()
+            
+        backtrack(0,0)
+        return res
+    
+# Time: O(4^n / sqrt(n))
+# Space: O(n) excluding output
+# Output space: O(n * Catalan(n))
